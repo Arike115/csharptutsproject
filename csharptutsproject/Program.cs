@@ -7,39 +7,57 @@
         //conditional statement
         public static void Main()
         {
-            Console.WriteLine("Please enter 1 to 5");
-            decimal userschoice = decimal.Parse(Console.ReadLine());
+            int TotalAmount = 0;
 
-            if(userschoice == 1 || userschoice == 2 || userschoice == 3 || userschoice == 4 || userschoice == 5)
-            {
-                Console.WriteLine("your choice is {0}", userschoice);
-            }
-            //else if (userschoice == 2)
-            //{
-            //    Console.WriteLine("your choice is {0}", userschoice);
-            //}
-            //else if (userschoice == 3)
-            //{
-            //    Console.WriteLine("your choice is {0}", userschoice);
-            //}
-            //else if (userschoice == 4)
-            //{
-            //    Console.WriteLine("your choice is {0}", userschoice);
-            //}
-            //else if (userschoice == 5)
-            //{
-            //    Console.WriteLine("your choice is {0}", userschoice);
-            //}
-            else
-            {
+            Start:
+            Console.WriteLine("select your choice of bread; 1 .. smallsize, 2.. mediumsize, 3... largesize");
+            int userchoice = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("your choice is {0} is incorrect", userschoice);
+            switch (userchoice)
+            {
+                case 1:
+                    TotalAmount += 100;
+                    break;
+                case 2:
+                    TotalAmount += 200;
+                    break;
+                case 3:
+                    TotalAmount += 400;
+                    break;
+                    default:
+                    Console.WriteLine("your choice {0}is invalid", userchoice);
+                    goto Start;
+
+
             }
+
+            confirm:
+
+            Console.WriteLine("Do you want another bread - Yes or No");
+            string userdecision = Console.ReadLine();
+
+            switch (userdecision.ToUpper())
+            {
+                case "Yes":
+                    goto Start;
+                case "No":
+                    break;
+                default:
+                    Console.WriteLine("your choice {0}is invalid", userdecision);
+                    goto confirm;
+            }
+
+
+            Console.WriteLine("Thank you for shopping with us");
+            Console.WriteLine("Bill Amount = {0}", TotalAmount);
+
+
+
 
 
         }
 
-      
+
 
     }
 
