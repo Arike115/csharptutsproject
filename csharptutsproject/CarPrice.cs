@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    internal class CarPrice
+    public class CarPrice : CarClass //derived class
     {
+        public  double Amount;
+        public void Amountpaid()
+        {
+            Console.WriteLine(Amount);
+        }
     }
 }

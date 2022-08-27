@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    //class
-    //properties or field ------- data
-    //constructor ----- representative of class
-    //method/functions -------- behaviour
 
-   public static class CarClass
+    //inheritance
+   public class CarClass //------> baseclass
     {
-       public static string Name = "john";
-       public static int Age = 90;
-        static DateTime CreatedOn = DateTime.Now;
+       public  string Name;
+       public  int modelyear;
+       public  string Color;
+       public  DateTime CreatedOn = DateTime.Now;
        
-        public static void Callmethod()
+        public  void Callmethod()
         {
-            Console.WriteLine("my name is {0}, am {1} years old", Name, Age);
+            Console.WriteLine("the car name is {0},  {1} model, color {2}", Name, modelyear,Color);
             Console.WriteLine("The time is {0}", CreatedOn);
         }
 

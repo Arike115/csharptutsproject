@@ -3,18 +3,19 @@
     
    public class Program
     {
-
+       
 
         public static void Main()
         {
-                //    non -static class
-                //    CarClass start = new CarClass("Joy Ben", 10);
-                //start.Callmethod();
+               CarPrice carprice = new CarPrice();
+            carprice.Name = "BMW";
+            carprice.Color = "Black";
+            carprice.modelyear = 2021;
+            carprice.Callmethod();
+            carprice.Amount = 20000000;
+            carprice.Amountpaid();
+            
 
-            //static class
-            CarClass.Name = "joyben";
-            CarClass.Age = 10;
-            CarClass.Callmethod();
             
         }
 
