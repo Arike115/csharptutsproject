@@ -11,27 +11,17 @@ namespace csharptutsproject
     //constructor ----- representative of class
     //method/functions -------- behaviour
 
-    public class StarterClass
+   public static class CarClass
     {
-        string Name = "Ben";
-        int Age = 25;
-        DateTime CreatedOn = DateTime.Now;
-
-        //contructor
-        //public StarterClass(string name, int age)
-        //{
-        //    Name = name;
-        //    Age = age;  
-        //}
-
-        public void Callmethod()
+       public static string Name = "john";
+       public static int Age = 90;
+        static DateTime CreatedOn = DateTime.Now;
+       
+        public static void Callmethod()
         {
             Console.WriteLine("my name is {0}, am {1} years old", Name, Age);
             Console.WriteLine("The time is {0}", CreatedOn);
         }
-
-
-
 
 
     }
