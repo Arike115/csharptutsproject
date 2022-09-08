@@ -1,19 +1,29 @@
 ﻿namespace csharptutsproject
 {
     
-   public class Program
+
+
+    //Enums
+    public class Program
     {
        
 
         public static void Main()
         {
-               CarPrice carprice = new CarPrice();
-            carprice.Name = "BMW";
-            carprice.Color = "Black";
-            carprice.modelyear = 2021;
-            carprice.Callmethod();
-            carprice.Amount = 20000000;
-            carprice.Amountpaid();
+            CarClass carClass = new CarClass();
+            carClass.modelyear = modelyearlist.modelyear3030;
+            carClass.Callmethod();
+            carClass.Fish<int>(5,67);
+
+            CarClass carClass2 = new CarClass();
+            carClass2.Fish<string>("ball", "ball");
+
+            UserDetailscs user = new UserDetailscs();
+            user.Name = "joy ola";
+            user.Age = 40;
+            user.Email = "ola34@yahoo.com";
+            user.Gender = Genderlist.Male;
+            user.GetUserinfor();
             
 
             

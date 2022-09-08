@@ -6,12 +6,32 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public class CarPrice : CarClass //derived class
+    public abstract class CarPrice : ITeachersDetails, IStudentDetails //derived class
     {
         public  double Amount;
         public void Amountpaid()
         {
             Console.WriteLine(Amount);
+        }
+
+        public void GetStudentDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetStudentlist()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetTeachersDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetTeachersList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
