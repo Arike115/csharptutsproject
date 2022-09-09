@@ -3,31 +3,53 @@
     
 
 
-    //Enums
+    //delegate--- is function pointer
     public class Program
     {
        
 
         public static void Main()
         {
-            CarClass carClass = new CarClass();
-            carClass.modelyear = modelyearlist.modelyear3030;
-            carClass.Callmethod();
-            carClass.Fish<int>(5,67);
+            object number = 6.7;
+            int[] numbers = { 2, 34, 5, 6, 7, };
 
-            CarClass carClass2 = new CarClass();
-            carClass2.Fish<string>("ball", "ball");
 
-            UserDetailscs user = new UserDetailscs();
-            user.Name = "joy ola";
-            user.Age = 40;
-            user.Email = "ola34@yahoo.com";
-            user.Gender = Genderlist.Male;
-            user.GetUserinfor();
+            List<UserDetailscs> list = new List<UserDetailscs>();
+
+            list.Add(new UserDetailscs() { Name = "joy", Email = "joy67@gmail.com", Age = 78,Gender = GenderList.Male});
+            list.Add(new UserDetailscs() { Name = "Troy", Email = "Troy67@gmail.com", Age = 58,Gender = GenderList.Female});
+            list.Add(new UserDetailscs() { Name = "Ben", Email = "ben67@gmail.com", Age = 20,Gender = GenderList.Male });
+            list.Add(new UserDetailscs() { Name = "larry", Email = "larry67@gmail.com", Age = 18, Gender = GenderList.Others });
+            list.Add(new UserDetailscs() { Name = "flora", Email = "flora67@gmail.com", Age = 30, Gender = GenderList.Female });
+            list.Add(new UserDetailscs() { Name = "yan", Email = "yan67@gmail.com", Age = 48, Gender = GenderList.Others });
+
+           // UserListDelegate listDelegate = new UserListDelegate(check);
+
+           // UserDetailscs.getuserdetail(list, listDelegate);
+
+            UserDetailscs.getuserdetail(list, emp => emp.Gender == GenderList.Male);
             
+
+
+          
 
             
         }
+
+
+        //public static bool check(UserDetailscs checkuser)
+        //{
+        //    if(checkuser.Gender == GenderList.Male)
+        //    {
+        //        Console.WriteLine(checkuser.Age);
+        //        return true;
+
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
 
 

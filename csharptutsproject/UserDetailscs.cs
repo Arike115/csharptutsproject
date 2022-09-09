@@ -6,28 +6,32 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public enum Genderlist
-    { 
+   public delegate bool UserListDelegate(UserDetailscs userlist);
+    public enum GenderList
+    {
         Female,
         Male,
         Others
-        
-
     }
 
+   
+    
     public class UserDetailscs
     {
-        public string Name;
-        public string Email;
-        public int Age;
-        public Genderlist Gender;
+        public string Name { get; set; }    
+        public string Email { get; set; }   
+        public int Age { get; set; }
+        public GenderList Gender { get; set; }
 
-       public void GetUserinfor()
+        public static void getuserdetail(List<UserDetailscs> users, UserListDelegate userdelagate)
         {
-            Console.WriteLine(Name);
-            Console.WriteLine(Email);
-            Console.WriteLine(Age); 
-            Console.WriteLine(Gender);
+            foreach(UserDetailscs detail in users)
+            {
+                if(userdelagate(detail))
+                {
+                    Console.WriteLine(detail.Name + " is older");
+                }
+            }
         }
     }
 }
