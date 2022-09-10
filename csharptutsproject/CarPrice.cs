@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public abstract class CarPrice : ITeachersDetails, IStudentDetails //derived class
+    public abstract class CarPrice 
     {
         public  double Amount;
         public void Amountpaid()

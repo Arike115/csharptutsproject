@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public  interface IStudentDetails : ITeachersDetails
+    public class Employee
     {
-        void GetStudentDetails();
-        void GetStudentlist();
+        public string Name { get; set; }
+        public int Id { get; set; }
+      
     }
 }

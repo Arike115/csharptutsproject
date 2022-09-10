@@ -10,30 +10,27 @@
 
         public static void Main()
         {
-            object number = 6.7;
-            int[] numbers = { 2, 34, 5, 6, 7, };
+           List<Employee> employees = new List<Employee>();
+            employees.Add(new Employee() { Id = 101, Name = "Mark"});
+            employees.Add(new Employee() { Id = 102, Name = "john" });
+            employees.Add(new Employee() { Id = 103, Name = "Mary" });
+            employees.Add(new Employee() { Id = 104, Name = "joy" });
 
 
-            List<UserDetailscs> list = new List<UserDetailscs>();
-
-            list.Add(new UserDetailscs() { Name = "joy", Email = "joy67@gmail.com", Age = 78,Gender = GenderList.Male});
-            list.Add(new UserDetailscs() { Name = "Troy", Email = "Troy67@gmail.com", Age = 58,Gender = GenderList.Female});
-            list.Add(new UserDetailscs() { Name = "Ben", Email = "ben67@gmail.com", Age = 20,Gender = GenderList.Male });
-            list.Add(new UserDetailscs() { Name = "larry", Email = "larry67@gmail.com", Age = 18, Gender = GenderList.Others });
-            list.Add(new UserDetailscs() { Name = "flora", Email = "flora67@gmail.com", Age = 30, Gender = GenderList.Female });
-            list.Add(new UserDetailscs() { Name = "yan", Email = "yan67@gmail.com", Age = 48, Gender = GenderList.Others });
-
-           // UserListDelegate listDelegate = new UserListDelegate(check);
-
-           // UserDetailscs.getuserdetail(list, listDelegate);
-
-            UserDetailscs.getuserdetail(list, emp => emp.Gender == GenderList.Male);
-            
-
-
-          
+            Predicate<Employee> employ = new Predicate<Employee>(findemployee);
 
             
+           Employee em = employees.Find(emp => findemployee(emp));
+
+            Console.WriteLine("Id = {0}, Name = {1}", em.Id, em.Name);
+
+            
+        }
+
+        public static bool findemployee(Employee emp)
+        {
+            
+            return emp.Id == 104;
         }
 
 
