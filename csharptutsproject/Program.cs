@@ -1,57 +1,73 @@
-﻿namespace csharptutsproject
+﻿#define funkewashere
+#undef funkegone
+namespace csharptutsproject
+
 {
-    
+    //operator overloading
 
-
-    //delegate--- is function pointer
     public class Program
     {
-       
+
 
         public static void Main()
         {
-           List<Employee> employees = new List<Employee>();
-            employees.Add(new Employee() { Id = 101, Name = "Mark"});
-            employees.Add(new Employee() { Id = 102, Name = "john" });
-            employees.Add(new Employee() { Id = 103, Name = "Mary" });
-            employees.Add(new Employee() { Id = 104, Name = "joy" });
+
+#if funkewashere
+Console.WriteLine("this is where she was");
+
+#else
+            Console.WriteLine("this is where she was");
+#endif
+            Console.WriteLine("this is where she was");
+#if funkegone
+Console.WriteLine("this is where she was");
+#endif
+            Console.WriteLine("this is where she was");
+
+            string word = "this is a new store";
 
 
-            Predicate<Employee> employ = new Predicate<Employee>(findemployee);
 
-            
-           Employee em = employees.Find(emp => findemployee(emp));
 
-            Console.WriteLine("Id = {0}, Name = {1}", em.Id, em.Name);
+            word.ReadMessage();
 
-            
+            "welcome to our store".ReadMessage();
+
+            calculate(56);
+            Console.ReadLine();
+
+
+
+
+
+
+
+            int x = 0;
+
+            //int y = v+x;
+
+            var car = new CarClass(2, 12);
+            var car2 = new CarClass(4, 8);
+
+            //car.Display();
+            var car3 = car * car2;
+            car3.Display();
+
+
         }
-
-        public static bool findemployee(Employee emp)
+        public static void calculate (int fig)
         {
-            
-            return emp.Id == 104;
-        }
 
+            Console.WriteLine(fig);
+         }
 
-        //public static bool check(UserDetailscs checkuser)
-        //{
-        //    if(checkuser.Gender == GenderList.Male)
-        //    {
-        //        Console.WriteLine(checkuser.Age);
-        //        return true;
+      
 
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
 
 
 
     }
-
+    
 
 }
 

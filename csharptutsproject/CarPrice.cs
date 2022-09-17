@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,11 @@ namespace csharptutsproject
 {
     public abstract class CarPrice 
     {
-        public  double Amount;
+
+        public double Balance;
+
+        //preprocessor directives
+        
         public void Amountpaid()
         {
             Console.WriteLine(Amount);
@@ -33,5 +39,6 @@ namespace csharptutsproject
         {
             throw new NotImplementedException();
         }
+      
     }
 }

@@ -6,38 +6,74 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public enum modelyearlist
-    { 
-       modelyear1990,
-       modelyear2016,
-       modelyear2022,
-       modelyear3030,
-       modelyear3032,
-
-    }
-
-
-    //inheritance
+    /// <summary>
+    /// carclass is a class use for entering user data
+    /// 
+    /// </summary>
     public class CarClass //------> baseclass
     {
-       public  string Name;
-       public  modelyearlist modelyear;
-       public  string Color;
-       public  DateTime CreatedOn = DateTime.Now;   //------- field
-       
-        public  void Callmethod() //--------meth0d
+        /// <summary>
+        /// these are properties that are used for my data
+        /// </summary>
+        public int Id;
+        public int grade;
+
+        
+        /// <summary>
+        /// this constructor is for getting data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="grade"></param>
+        public CarClass(int id, int grade)
         {
-            Console.WriteLine("the car name is {0},{1} model, color {2}", Name, modelyear,Color);
-            Console.WriteLine("The time is {0}", CreatedOn);
+            this.Id = id;
+            this.grade = grade;
         }
 
-        public bool Fish<T>( T value1, T value2)
+        /// <summary>
+        /// this method is used to display an item
+        /// </summary>
+        public void Display()
         {
-            bool result = value1.Equals(value2);
-            Console.WriteLine(result);
-            return result;
-
+            Console.WriteLine("Id:" + Id);
+            Console.WriteLine("Grade:" + grade);
         }
+        #region operator overloading
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
+        /// <returns></returns>
+        public static CarClass operator * (CarClass c1, CarClass c2)
+        {
+            //if(c1.grade < c2.grade)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
 
+            var newclass = new CarClass(c1.Id * c2.Id, c1.grade * c2.grade);
+            return newclass;
+        }
+        #endregion
+
+        //public static bool operator <(CarClass c1, CarClass c2)
+        //{
+        //    if (c1.grade < c2.grade)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
+
+
 }
+

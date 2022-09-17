@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public class Employee
+    public static class Employee
     {
-        public string Name { get; set; }
-        public int Id { get; set; }
+       public static void ReadMessage(this string message)
+        {
+            Console.WriteLine(message);
+        }
       
     }
 }
