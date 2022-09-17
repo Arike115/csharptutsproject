@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace csharptutsproject
 {
-    public static class Employee
+    public  class Player
     {
-       public static void ReadMessage(this string message)
-        {
-            Console.WriteLine(message);
-        }
+        public string Name { get; set; }    
+        public int Age { get; set; } 
+
       
     }
 }
