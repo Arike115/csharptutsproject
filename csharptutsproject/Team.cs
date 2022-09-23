@@ -30,13 +30,6 @@ namespace csharptutsproject
        
 
 
-        //public Player[] playerteam = new Player[4];
-        //public Team()
-        //{
-        //    playerteam[0] = new Player("virat", 24);
-        //    playerteam[0] = new Player("ben", 20);
-        //    playerteam[0] = new Player("John",35);
-        //    playerteam[0] = new Player("mary", 19);
-        //}
+     
     }
 }
