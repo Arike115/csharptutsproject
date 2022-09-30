@@ -5,43 +5,63 @@
     {
 
         /// <summary>
-       /// Groupby
-       /// Ordering Operators
+       /// Element Operators --- first, firstordefault, last,lastordefault, single,singlordefault, elementat
+       ///                      elementatdefault,defualtorempty
+       /// Quantifier Operators  ----- any, all, contain
+       /// Agregate Operators
         /// </summary>
         public static void Main()
         {
-            //GroupBy
+            //Element Opertors
+            int[] Number = { 1, 2, 3, 4, 5, 6, 7 };
+            int result = Number.FirstOrDefault();
+            Console.WriteLine(result);
+
+            int[] Numbers = { 4, 5, 6, 7 };
+            int results = Numbers.LastOrDefault();
+            Console.WriteLine(results);
+
+            int[] Numberse = { 1 };
+            int resultse = Numberse.SingleOrDefault();
+            Console.WriteLine(resultse);
+
+            string[] words = { "chalk", "pen", "book", "apple" };
+            string resultses = words.ElementAt(1);
+            Console.WriteLine(resultses);
+
+            int[] Numberses = { 4, 5, 6, 7 };
+
+            var total = Numberses.DefaultIfEmpty();
+            foreach (int number in total)
+            {
+                Console.WriteLine(number);
+            }
+
+            //Quantifiers
+
+            int[] figures = { 2, 4, 8, 10, 12 };
+
+            var res = figures.Contains(3);
+            Console.WriteLine(res);
+            
+            var resul = figures.Any(x => x > 12);
+            Console.WriteLine(resul);
+
+
             var empgroups = from employee in Employee.Getallemployee()
                             group employee by employee.Dept;
 
-            var employeegroups = Employee.Getallemployee().GroupBy(employee => employee.Dept);
+            var employeegroups = Employee.Getallemployee().Any(employee => employee.Gender == "Male");
+            Console.WriteLine(employeegroups);
 
-            foreach(var emp in employeegroups)
-            {
-                Console.WriteLine("{0} - {1}", emp.Key, emp.Count());
-                Console.WriteLine("-------------------");
-                foreach(var ep in emp)
-                {
-                    Console.WriteLine(ep.Name + "\t" + ep.Dept + "\t"+ ep.Salary);
-                }
-                Console.WriteLine(); Console.WriteLine();
-            }
+            string[] letters = { "cup", "bottle", "mop" };
+            var reses = letters.All(x => x == "mop");
+            Console.WriteLine(reses);
 
-            //ordering operator
-            Console.WriteLine("--------Ordering Operators-----------");
-            //Query type
-            var orders = from employee in Employee.Getallemployee()
-                        orderby employee.Name
-                        select employee;
 
-            var orderresult = Employee.Getallemployee().OrderByDescending(employee => employee.Name);
-            foreach(var order in orderresult)
-            {
-                Console.WriteLine(order.Name + "\t" + order.Dept + "\t" + order.Salary);
-            }
-        } 
+        }
 
-        
+
 
 
 
