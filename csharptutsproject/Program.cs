@@ -29,6 +29,11 @@
 
             //ordering operator
             Console.WriteLine("--------Ordering Operators-----------");
+            //Query type
+            var orders = from employee in Employee.Getallemployee()
+                        orderby employee.Name
+                        select employee;
+
             var orderresult = Employee.Getallemployee().OrderByDescending(employee => employee.Name);
             foreach(var order in orderresult)
             {
