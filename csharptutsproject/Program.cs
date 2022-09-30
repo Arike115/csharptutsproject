@@ -1,61 +1,39 @@
-﻿#define funkewashere
-#undef funkegone
-namespace csharptutsproject
+﻿namespace csharptutsproject
 
 {
     public class Program
     {
 
         /// <summary>
-        /// Set-Operators
-        ///     Distinct --->returns distinct values
-        ///     union ---> union combines two collection into one collaction
-        ///     intersect -----> returns the common elements between the two collection
-        ///     except ----> returns the elements that are present in the first collection but not in the second 
-        ///                 collection
+       /// Groupby
+       /// Ordering Operators
         /// </summary>
         public static void Main()
         {
-            string[] Countries = { "Nigeria", "India", "Uk", "Canada", "Japan", "Uk","uk" };
-            int[] numbers = { 1, 2, 3, 4, 5};
-            int[] word = { 5, 4, 7, 8, 9 };
-            var result = Countries.Distinct(StringComparer.OrdinalIgnoreCase);
-            var result2 = numbers.Distinct();
+            //GroupBy
+            var empgroups = from employee in Employee.Getallemployee()
+                            group employee by employee.Dept;
 
-            var unionresult = numbers.Union(word);
-            var intersectresult = numbers.Intersect(word);
-            var unionexcept = numbers.Except(word);
+            var employeegroups = Employee.Getallemployee().GroupBy(employee => employee.Dept);
 
-            foreach (int results in unionexcept)
+            foreach(var emp in employeegroups)
             {
-                Console.WriteLine(results);
+                Console.WriteLine("{0} - {1}", emp.Key, emp.Count());
+                Console.WriteLine("-------------------");
+                foreach(var ep in emp)
+                {
+                    Console.WriteLine(ep.Name + "\t" + ep.Dept + "\t"+ ep.Salary);
+                }
+                Console.WriteLine(); Console.WriteLine();
             }
 
-            Console.WriteLine("----------------intersect-------"); 
-            foreach (int results in intersectresult)
+            //ordering operator
+            Console.WriteLine("--------Ordering Operators-----------");
+            var orderresult = Employee.Getallemployee().OrderByDescending(employee => employee.Name);
+            foreach(var order in orderresult)
             {
-                Console.WriteLine(results);
+                Console.WriteLine(order.Name + "\t" + order.Dept + "\t" + order.Salary);
             }
-
-            Console.WriteLine("----------------union-------");
-
-            foreach(int results in unionresult)
-            {
-                Console.WriteLine(results);
-            }
-
-            //foreach(var country in result)
-            //{
-            //    Console.WriteLine(country);
-            //}
-
-
-            //foreach (var country in result2)
-            //{
-            //    Console.WriteLine(country);
-            //}
-
-            // Console.ReadKey();
         } 
 
         
