@@ -5,59 +5,70 @@
     {
 
         /// <summary>
-       /// Element Operators --- first, firstordefault, last,lastordefault, single,singlordefault, elementat
-       ///                      elementatdefault,defualtorempty
-       /// Quantifier Operators  ----- any, all, contain
-       /// Agregate Operators
+       /// 
+       /// Agregate Operators -----sum,count,longcount,max,min,average
         /// </summary>
         public static void Main()
         {
-            //Element Opertors
-            int[] Number = { 1, 2, 3, 4, 5, 6, 7 };
-            int result = Number.FirstOrDefault();
-            Console.WriteLine(result);
+            var employee = Employee.Getallemployee();
 
-            int[] Numbers = { 4, 5, 6, 7 };
-            int results = Numbers.LastOrDefault();
-            Console.WriteLine(results);
+            var sumsalary = employee.Sum(s => s.Salary);
 
-            int[] Numberse = { 1 };
-            int resultse = Numberse.SingleOrDefault();
-            Console.WriteLine(resultse);
+            var avaeragedata = employee.Average(s => s.Salary);
 
-            string[] words = { "chalk", "pen", "book", "apple" };
-            string resultses = words.ElementAt(1);
-            Console.WriteLine(resultses);
+            var maxsalary = employee.Max(s => s.Salary);    
 
-            int[] Numberses = { 4, 5, 6, 7 };
+            var minsalary = employee.Min(s => s.Salary);
 
-            var total = Numberses.DefaultIfEmpty();
-            foreach (int number in total)
-            {
-                Console.WriteLine(number);
-            }
+            var countdata = employee.Count();
+            var lountdata = employee.LongCount();
 
-            //Quantifiers
+            Console.WriteLine("sum of salary = {0} \nAvg Salary = {1} \nMax Salary = {2} \nMin Salary = {3} \n Count = {4} \n loncount {5}",
+                sumsalary,avaeragedata,maxsalary,minsalary,countdata,lountdata);
 
-            int[] figures = { 2, 4, 8, 10, 12 };
-
-            var res = figures.Contains(3);
-            Console.WriteLine(res);
-            
-            var resul = figures.Any(x => x > 12);
-            Console.WriteLine(resul);
+           
 
 
-            var empgroups = from employee in Employee.Getallemployee()
-                            group employee by employee.Dept;
 
-            var employeegroups = Employee.Getallemployee().Any(employee => employee.Gender == "Male");
-            Console.WriteLine(employeegroups);
 
-            string[] letters = { "cup", "bottle", "mop" };
-            var reses = letters.All(x => x == "mop");
-            Console.WriteLine(reses);
 
+
+
+            //string[] Keywords = {
+            //"abstract", "add*", "alias*", "as", "ascending*",
+            //"async*", "await*", "base","bool", "break",
+            //"by*", "byte", "case", "catch", "char", "checked",
+            //"class", "const", "continue", "decimal", "default",
+            //"delegate", "descending*", "do", "double",
+            //"dynamic*", "else", "enum", "event", "equals*",
+            //"explicit", "extern", "false", "finally", "fixed",
+            //"from*", "float", "for", "foreach", "get*", "global*",
+            //"group*", "goto", "if", "implicit", "in", "int",
+            //"into*", "interface", "internal", "is", "lock", "long",
+            //"join*", "let*", "nameof*", "namespace", "new", "null",
+            //"object", "on*", "operator", "orderby*", "out",
+            //"override", "params", "partial*", "private", "protected",
+            //"public", "readonly", "ref", "remove*", "return", "sbyte",
+            //"sealed", "select*", "set*", "short", "sizeof",
+            //"stackalloc", "static", "string", "struct", "switch",
+            //"this", "throw", "true", "try", "typeof", "uint", "ulong",
+            //"unsafe", "ushort", "using", "value*", "var*", "virtual",
+            //"unchecked", "void", "volatile", "where*", "while", "yield*"};
+
+            // var selection =
+            //    from word in Keywords
+            //    where word.Any()
+            //    select word;
+
+            //var select = Keywords.Select(x => x.Contains('*'));
+
+            //foreach(var word in selection)
+            //{
+            //    Console.WriteLine(word);
+            //}
+
+
+           
 
         }
 
