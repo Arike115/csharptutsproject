@@ -1,76 +1,109 @@
 ﻿namespace csharptutsproject
 
 {
+    //Join == innerJoin
+    //Group Join 
+    //Left join == left outer join
+    //right join  === right outer join
     public class Program
     {
-
-        /// <summary>
-       /// 
-       /// Agregate Operators -----sum,count,longcount,max,min,average
-        /// </summary>
-        public static void Main()
+        public static async Task Main()
         {
-            var employee = Employee.Getallemployee();
+            var student = Student.GetStudents();
+            var teacher = Teacher.GetClasses();
 
-            var sumsalary = employee.Sum(s => s.Salary);
+            //////join
+            //////querysyntax
+            //var data = from s in student
+            //           join t in teacher
+            //           on s.TeacherNo equals t.Id
+            //           select new { s.TeacherNo, s.Name, s.RollNo, t.ClassTeacherName, t.Fees };
 
-            var avaeragedata = employee.Average(s => s.Salary);
-
-            var maxsalary = employee.Max(s => s.Salary);    
-
-            var minsalary = employee.Min(s => s.Salary);
-
-            var countdata = employee.Count();
-            var lountdata = employee.LongCount();
-
-            Console.WriteLine("sum of salary = {0} \nAvg Salary = {1} \nMax Salary = {2} \nMin Salary = {3} \n Count = {4} \n loncount {5}",
-                sumsalary,avaeragedata,maxsalary,minsalary,countdata,lountdata);
-
-           
-
-
+            ////Extensionmethod / Basedsyntax
+            //var datas = student.Join(teacher,
+            //                        y => y.TeacherNo,
+            //                        t => t.Id,
+            //                        (bt, xl) =>
+            //                        new
+            //                        {
+            //                            bt.TeacherNo,
+            //                            bt.Name,
+            //                            bt.RollNo,
+            //                            xl.ClassTeacherName,
+            //                            xl.Fees
+            //                        });
 
 
-
-
-
-            //string[] Keywords = {
-            //"abstract", "add*", "alias*", "as", "ascending*",
-            //"async*", "await*", "base","bool", "break",
-            //"by*", "byte", "case", "catch", "char", "checked",
-            //"class", "const", "continue", "decimal", "default",
-            //"delegate", "descending*", "do", "double",
-            //"dynamic*", "else", "enum", "event", "equals*",
-            //"explicit", "extern", "false", "finally", "fixed",
-            //"from*", "float", "for", "foreach", "get*", "global*",
-            //"group*", "goto", "if", "implicit", "in", "int",
-            //"into*", "interface", "internal", "is", "lock", "long",
-            //"join*", "let*", "nameof*", "namespace", "new", "null",
-            //"object", "on*", "operator", "orderby*", "out",
-            //"override", "params", "partial*", "private", "protected",
-            //"public", "readonly", "ref", "remove*", "return", "sbyte",
-            //"sealed", "select*", "set*", "short", "sizeof",
-            //"stackalloc", "static", "string", "struct", "switch",
-            //"this", "throw", "true", "try", "typeof", "uint", "ulong",
-            //"unsafe", "ushort", "using", "value*", "var*", "virtual",
-            //"unchecked", "void", "volatile", "where*", "while", "yield*"};
-
-            // var selection =
-            //    from word in Keywords
-            //    where word.Any()
-            //    select word;
-
-            //var select = Keywords.Select(x => x.Contains('*'));
-
-            //foreach(var word in selection)
+            //foreach (var item in datas)
             //{
-            //    Console.WriteLine(word);
+            //    Console.WriteLine($"StudentName => {item.Name} ---- TeacherName => {item.ClassTeacherName}" +
+            //        $" --- id=> {item.RollNo} ----SchoolLevy =>{item.Fees}");
             //}
 
 
-           
+
+            ////Left Outer Join or left join
+            ////quersyntax
+
+            //var leftdata = from d in teacher
+            //               join c in student
+            //               on d.Id equals c.TeacherNo into
+            //               groupstudent
+            //               from g in groupstudent.DefaultIfEmpty()
+            //               select new
+            //               {
+            //                   d.Id,
+            //                   d.ClassTeacherName,
+            //                   classstudent = g == null ? "no student" : g.Name,
+            //                   classnumber = g == null ? 0 : g.RollNo
+            //               };
+
+            //foreach (var item in leftdata)
+            //{
+            //    Console.WriteLine($"name => {item.ClassTeacherName} ---- RollNumber => {item.classnumber}" +
+            //        $" --- id=> {item.Id} ----studentName =>{item.classstudent}");
+            //}
+
+
+            //GroupJoin
+            //QuerySyntax
+
+            var groupdata = from d in teacher
+                            join c in student
+                            on d.Id equals c.TeacherNo into Groupstudent
+                            select new
+                            { 
+                                d.Id,
+                                d.ClassTeacherName,
+                                Groupstudent
+                            };
+
+            //basedsyntax
+
+            var newdata = student.GroupJoin(teacher,
+                            b => b.TeacherNo,
+                            c => c.Id,(bt, groupstudent)
+                            => new
+                            {
+                                bt.Name,
+                                bt.TeacherNo,
+                                bt.Gender,
+                                groupstudent
+                            });
+
+
+            foreach (var item in groupdata)
+            {
+                Console.WriteLine($"name:{item.ClassTeacherName} ID:{item.Id}");
+                foreach(var item2 in item.Groupstudent)
+                {
+                    Console.WriteLine($"studentname => {item2.Name} ----- RollNo => {item2.RollNo}");
+                }
+            }
 
         }
+
+
 
 
 
