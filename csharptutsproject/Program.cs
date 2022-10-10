@@ -1,114 +1,72 @@
 ﻿namespace csharptutsproject
 
 {
-    //Join == innerJoin
-    //Group Join 
-    //Left join == left outer join
-    //right join  === right outer join
+
+    //asynchronous programming
     public class Program
     {
         public static async Task Main()
         {
-            var student = Student.GetStudents();
-            var teacher = Teacher.GetClasses();
+            string textfilepath = @"c:\users\Documents\INFO.txt";
 
-            //////join
-            //////querysyntax
-            //var data = from s in student
-            //           join t in teacher
-            //           on s.TeacherNo equals t.Id
-            //           select new { s.TeacherNo, s.Name, s.RollNo, t.ClassTeacherName, t.Fees };
+            StreamWriter sw = new StreamWriter(textfilepath);
 
-            ////Extensionmethod / Basedsyntax
-            //var datas = student.Join(teacher,
-            //                        y => y.TeacherNo,
-            //                        t => t.Id,
-            //                        (bt, xl) =>
-            //                        new
-            //                        {
-            //                            bt.TeacherNo,
-            //                            bt.Name,
-            //                            bt.RollNo,
-            //                            xl.ClassTeacherName,
-            //                            xl.Fees
-            //                        });
+            sw.Write("this is a random ");
+            sw.WriteLine("sentence ");
+            sw.WriteLine("this is a new word ");
+            sw.WriteLine("Hello world");
+
+            sw.Close();
 
 
-            //foreach (var item in datas)
-            //{
-            //    Console.WriteLine($"StudentName => {item.Name} ---- TeacherName => {item.ClassTeacherName}" +
-            //        $" --- id=> {item.RollNo} ----SchoolLevy =>{item.Fees}");
-            //}
+           StreamReader sr = File.OpenText(textfilepath);
+
+            Console.WriteLine("peek:{0}",Convert.ToChar(sr.Peek()));
+
+            Console.WriteLine("readalllines:{0}", sr.ReadLine());
+
+            Console.WriteLine("readall:{0}", sr.ReadToEnd());
+
+            sr.Close();
 
 
+            //DirectoryInfo dir = new DirectoryInfo(@"c:\users\Documents");
 
-            ////Left Outer Join or left join
-            ////quersyntax
-
-            //var leftdata = from d in teacher
-            //               join c in student
-            //               on d.Id equals c.TeacherNo into
-            //               groupstudent
-            //               from g in groupstudent.DefaultIfEmpty()
-            //               select new
-            //               {
-            //                   d.Id,
-            //                   d.ClassTeacherName,
-            //                   classstudent = g == null ? "no student" : g.Name,
-            //                   classnumber = g == null ? 0 : g.RollNo
-            //               };
-
-            //foreach (var item in leftdata)
-            //{
-            //    Console.WriteLine($"name => {item.ClassTeacherName} ---- RollNumber => {item.classnumber}" +
-            //        $" --- id=> {item.Id} ----studentName =>{item.classstudent}");
-            //}
+            //Console.WriteLine(dir.FullName);
+            //Console.WriteLine(dir.Name);
+            //Console.WriteLine(dir.Parent);
+            //Console.WriteLine(dir.Attributes);
+            //Console.WriteLine(dir.CreationTime);
 
 
-            //GroupJoin
-            //QuerySyntax
+            //  string[] customers =
+            //  {
+            //      "bob smith",
+            //      "sally smith",
+            //      "robert smith",
+            //      "joy rob"
+            //  };
+            //  string textfilepath = @"c:\users\Documents\efd.txt";
 
-            var groupdata = from d in teacher
-                            join c in student
-                            on d.Id equals c.TeacherNo into Groupstudent
-                            select new
-                            { 
-                                d.Id,
-                                d.ClassTeacherName,
-                                Groupstudent
-                            };
+            ////  File.WriteAllLines(textfilepath, customers);
 
-            //basedsyntax
-
-            var newdata = student.GroupJoin(teacher,
-                            b => b.TeacherNo,
-                            c => c.Id,(bt, groupstudent)
-                            => new
-                            {
-                                bt.Name,
-                                bt.TeacherNo,
-                                bt.Gender,
-                                groupstudent
-                            });
-
-
-            foreach (var item in groupdata)
-            {
-                Console.WriteLine($"name:{item.ClassTeacherName} ID:{item.Id}");
-                foreach(var item2 in item.Groupstudent)
-                {
-                    Console.WriteLine($"studentname => {item2.Name} ----- RollNo => {item2.RollNo}");
-                }
-            }
+            //  foreach (var cust in File.ReadLines(textfilepath))
+            //  {
+            //      Console.WriteLine(cust);
+            //  }
 
         }
 
+        public static async Task FirstMethod()
+        {
+            Console.WriteLine("all gone let afresh");
+            Console.WriteLine("all gone let start afresh");
+        }
 
-
-
-
-
-
+        public static async Task secondMethod()
+        {
+            Console.WriteLine("the past is gone");
+        }
 
     }
     
